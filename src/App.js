@@ -277,7 +277,7 @@ class App extends Component {
        playlist.name.toLowercase().includes(
          this.state,FilterString.toLowercase())
        .map(playlists => playlist
-      )}
+      )}   
        </div>
        
        <div>
@@ -298,10 +298,10 @@ class App extends Component {
  </div>
  
  
-  render () {
+  :render () {
     let name = 'Jay'
     let white = '#0000'
-    let headerStyle = {color} : white, 'font-size': '54px'}
+    let headerStyle = {color} : white, 'font-size' : '54px'}
     return (
       <div className="App">
         <div className="App-header">

@@ -144,7 +144,7 @@ class App extends Component {
   
    }  
  }
-  ComponentDidMount() {
+  ComponentDidMount() 
    //returns data from the server to the client//
     
     let parsed = queryString.parsed(window.location.querystring);
@@ -162,7 +162,7 @@ class App extends Component {
           }
         }))    
    
-  }
+  
    
    fetch('https://api.spotify.com/v1/me/playlists', {
     headers: {'Authorization': 'Bearer' + accessToken}

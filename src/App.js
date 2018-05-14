@@ -11,6 +11,7 @@ let defaultStyle = {
   color: '#fff',
   'font-family': 'Helvetica Neue Thin'
 };
+
 let counterStyle = {defaultStyle,
   width: "40%",
      display: 'inline-block',
@@ -58,8 +59,7 @@ class PlaylistCounter extends Component {
 }
 
 
-
-class HoursCounter extends Component {
+(class HoursCounter extends Component {
 render () {
   let allSongs = this.props.playlists.reduce;((songs,eachPlaylist) => { []
   let totalDuration = this.playlist.setState.serverData;
@@ -147,10 +147,13 @@ class App extends Component {
   ComponentDidMount() 
    //returns data from the server to the client//
     
+    {
     let parsed = queryString.parsed(window.location.querystring);
     let accessToken = parsed.access_token;
     if (!accessToken)
     return;
+  }
+
     
     fetch('https://api.spotify.com/v1/me', {
       headers: {'Authorization': 'Bearer' + accessToken}})
@@ -169,7 +172,7 @@ class App extends Component {
     })
     .then((response => response.json())
     .then(data => {
-   let playlist = playlistData.items
+    let playlist = playlistData.items
     data.items.map(playlist => {
     let trackDataPromises = playlistData.items.map(playlist => {
     let responsePromise = fetch(playlist.tracks.href,{
@@ -183,25 +186,31 @@ class App extends Component {
         return trackdataPromise
     
     })
-   //sends data of the playlists to the server to return the user data in the hours counter?//
-   let allTrackDataPromises =
+   //sends data of the playlists to the server to return the user data in the hours counter class//
+   let allTrackDataPromises = 
       Promise.all(trackDataPromises)
    let playlistPromise = allTrackDataPromises.then(trackData => {
-       trackDatas.forEach(trackData, i) => {
+      trackDatas.forEach(trackData, i);
+     
+      function trackDataPromise =>
+      
+      {
        playlists[i].trackDatas = trackDatas.items
       .map(item => items.track)
       .map(trackData => ({
        name: trackData.name,
        duration: trackData.duration_ms / 1000
       }))
-      })
-   return playlists
-    })
-    
-
-    )
+    }}
    
-    freturn playlisyPromise
+   return playists
+    
+    })
+  )
+
+    
+   
+    return playlisyPromise
     .then(playlist => this.setState ({
     playlists: data.items.map(items => {
 
@@ -219,7 +228,7 @@ class App extends Component {
   }))  
 
     
-   render(){
+   render();{
    let playlistToRender = 
      this.state.user &&
      this.state.playlists
@@ -229,20 +238,23 @@ class App extends Component {
      let matchesSong = playlist.songs.find (song => song.name().includes(this.state.filterString.toLowerCase()))
      return matchesPlaylist || matchesSong
     
-    }) : []
+    }) ; []
        
        
       
   
   //sets header to send search query data to server and return desired items to client//
    return (
-    <div className="App">
+    <div> className="App" <div/>
+    
    {this.state.user ?
+
     <div>
      <h1 style={{...defaultStyle,
-     'font-size': '54px'
+     'font-size': '54px',
      'margin-top':'5px'
      }}>
+    
      {this.state.user.name}'s Playlists
      </h1>
      this.state.serverData.user.name}'s Playlists'
@@ -254,22 +266,28 @@ class App extends Component {
             this.setState({filterString:text})
           }}/>
          
-           {paylistsToRender.map(playlist, i) =>
-             <Playlist playlist ={playlist} index={i} />
+           {paylistsToRender.map(playlist, i)} => 
+             <Playlist playlist = {playlist} index={i} />
              )}
           )}
-       <div> : <button onClick={()=> {
+       <div> : <button onClick={ () => {
          window.location.includes ('localhost')
       ? 'https://localhost:8888/login'
-      : 'https://herokuapp/better-playlists-backend-jay.herokuapp.com/login' }
+      : 'https://herokuapp/better-playlists-backend-jay.herokuapp.com/login' } 
   }
+  /> 
+
+
     
  
        style={{padding: '20px','font-size':'50px','margin-top':'20px'}}> Sign in 
+       
       
       
       
-       </div> : <button style = {{padding: '20px', 'font-size':'180px'}}> Sign in with Spotify</button>
+      
+       
+       : <button style = {{padding: '20px', 'font-size':'180px'}}> Sign in with Spotify</button>
        
      
      {this.state.serverData.user.playlists.map (playlist =>
@@ -277,7 +295,8 @@ class App extends Component {
        playlist.name.toLowercase().includes(
          this.state,FilterString.toLowercase())
        .map(playlists => playlist
-      )}   
+      )}
+
        </div>
        
        <div>
@@ -302,6 +321,7 @@ class App extends Component {
     let name = 'Jay'
     let white = '#0000'
     let headerStyle = {color} : white, 'font-size' : '54px'}
+    
     return (
       <div className="App">
         <div className="App-header">
@@ -312,7 +332,7 @@ class App extends Component {
           <Filter onTextChange = {text => {
             this.setState({filterString:text})
           }}/>
-          <Filter onTextChange={text=>} />
+          <Filter onTextChange={text => {} } />
           {this.state.serverData.user.playlists.map(playlists =>
            <Playlist playlist = {playlist}/>
           )}
@@ -324,17 +344,19 @@ class App extends Component {
         </p>
       
 
-      </div> : <button onClick={()=>{
+      </div> 
+      
+      : <button onClick={()=>{
         if (window.location.href.includes('localhost')
         ? 'http://localhost:8888/login' 
         : 'https://better-playlist-backend.herokuapp.com/login'
         )
       }
+
       }
-      style ={{padding: '20px', 'font-size': '50px','margin-top':'20px'}}> Sign in with spotify </button>
+      style ={{'padding': '20px', 'font-size': '50px','margin-top':'20px'}}> Sign in with spotify </button>
       
       
       
     );
   }
-
